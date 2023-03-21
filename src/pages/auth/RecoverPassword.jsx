@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { recoverAccount } from "../scripts/firebase/auth";
+import { recoverAccount } from "../../scripts/firebase/auth";
 
 export default function RecoverPassword() {
   const [email, setEmail] = useState("");

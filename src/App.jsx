@@ -4,9 +4,15 @@ import StudentRoutes from "./routes/StudentRoutes";
 import { useUser } from "./state/UserContext";
 
 export default function App() {
-  const { uid } = useUser();
+  const { user, uid } = useUser();
+  const isTeacher = user.role == "teacher";
+  // console.log("isTeacher", isTeacher);
 
   return (
-    <div className="App">{uid ? <AdminRoutes /> : <UnloggedRoutes />}</div>
+    <div className="App">
+      {!user.uid && <UnloggedRoutes />}
+      {user.id && isTeacher && <AdminRoutes />}
+      {user.id && !isTeacher && <StudentRoutes />}
+    </div>
   );
 }

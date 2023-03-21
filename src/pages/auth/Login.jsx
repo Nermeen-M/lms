@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { login } from "../scripts/firebase/auth";
-import { readDocument } from "../scripts/firebase/fireStore";
-import { useUser } from "../state/UserContext";
+import { login } from "../../scripts/firebase/auth";
+import { readDocument } from "../../scripts/firebase/fireStore";
+import { useUser } from "../../state/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { setUid, saveUID, setUser, saveUser } = useUser();
+  // const { setUid, saveUID, setUser, saveUser } = useUser();
+  const { setUser, saveUser } = useUser();
 
   const [email, setEmail] = useState("nermeen.mamdouh.nm@gmail.com");
   const [password, setPassword] = useState("123456");
@@ -22,13 +23,13 @@ export default function Login() {
 
   async function onSucess(result) {
     const userData = await getUserData(result.payload);
-    console.log("user Data", userData);
-    setUid(result.payload);
+    // console.log("user Data", userData);
+    // setUid(result.payload);
     setUser(userData);
 
     if (remember) {
-      console.log("Login.jsx preparing to save...", result.payload);
-      saveUID(result.payload);
+      // console.log("Login.jsx preparing to save...", result.payload);
+      // saveUID(result.payload);
       await saveUser(userData);
     }
 

@@ -1,5 +1,6 @@
-import AdminCourseItem from "../components/AdminCourseItem";
+import AdminCourseItem from "../components/admin/AdminCourseItem";
 import EmptyState from "../components/shared/EmptyState";
+import AddUpdateCourseForm from "../components/admin/AddUpdateCourseForm";
 
 import { useCourses } from "../state/CoursesContext";
 import { useModal } from "../state/ModalContext";
@@ -15,7 +16,7 @@ export default function AdminHome() {
   return (
     <div>
       <h1>Admin Home</h1>
-      <button onClick={() => setModal(<p>Add new course</p>)}>Add new</button>
+      <button onClick={() => setModal(<AddUpdateCourseForm />)}>Add new</button>
       {coursesList.length === 0 ? <EmptyState /> : coursesList}
     </div>
   );

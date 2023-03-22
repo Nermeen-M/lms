@@ -8,7 +8,7 @@ export default function NotFound() {
     <main id="page-not-found">
       <FontAwesomeIcon icon={solid("triangle-exclamation")} bounce />
       <h1>Page not found</h1>
-      <button className="primary-button" onClick={() => navigate("/")}>
+      <button className="primary-button" onClick={() => navigate("/home")}>
         Back to Home
       </button>
     </main>

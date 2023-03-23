@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "key": "title",
+    "type": "text",
+    "label": "Title",
+    "required": true,
+    "disabled": false,
+    "placeholder": "Science"
+  },
+  {
+    "id": 2,
+    "key": "description",
+    "type": "textarea",
+    "label": "Description",
+    "required": true,
+    "disabled": false
+  },
+  {
+    "id": 3,
+    "key": "image",
+    "type": "file",
+    "label": "",
+    "required": true,
+    "disabled": false
+  }
+]

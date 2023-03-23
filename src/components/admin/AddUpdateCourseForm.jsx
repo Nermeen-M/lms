@@ -15,7 +15,7 @@ import ImagePreview from "../ImagePreview";
 import LoadingScreen from "../shared/LoadingScreen";
 import placeholder from "../../assets/images/placeholder.jpg";
 
-export default function AddUpdateCourseForm() {
+export default function AddUpdateCourseForm({ isEditMode, item }) {
   const { dispatch } = useCourses();
   const { setModal } = useModal();
 
@@ -23,7 +23,11 @@ export default function AddUpdateCourseForm() {
   const [isloading, setIsloading] = useState(false);
   const manualId = uuidv4() + "_" + Date.now();
   const collectionName = "courses";
-  const initialValues = { title: "", image: null };
+
+  const initialValues = !isEditMode
+    ? { title: "", image: null }
+    : { title: item.title, image: item.image };
+  // const initialValues = { title: "", image: null };
 
   function validate(values) {
     const errors = {};
@@ -41,7 +45,10 @@ export default function AddUpdateCourseForm() {
     return errors;
   }
 
+  function ImageChangeHandler() {}
+
   async function onSubmit(values, { setSubmitting }) {
+    console.log("before", values.image);
     // setSubmitting(false);
     setIsloading(true);
     const file = values.image;
@@ -49,6 +56,7 @@ export default function AddUpdateCourseForm() {
 
     await uploadFile(file, filePath);
     values.image = await downloadFile(filePath);
+    console.log("after", values.image.file);
 
     await createDocumentWithManualId(collectionName, manualId, values);
     dispatch({ type: "create", payload: { id: manualId, ...values } });
@@ -73,12 +81,24 @@ export default function AddUpdateCourseForm() {
               <Field name="title" type="text" />
               <ErrorMessage name="title" />
 
-              <label htmlFor="image">Image</label>
+              <label htmlFor="image">
+                {!isEditMode && values.image ? (
+                  <ImagePreview file={values.image} />
+                ) : (
+                  <img
+                    width="50"
+                    height="50"
+                    src={
+                      !isEditMode && !values.image ? placeholder : values.image
+                    }
+                  />
+                )}
+              </label>
               {/* {isloading && (
-            <div className="spinner">
-              <FontAwesomeIcon icon={solid("spinner")} spin />
-            </div>
-          )} */}
+                <div className="spinner">
+                  <FontAwesomeIcon icon={solid("spinner")} spin />
+                </div>
+              )} */}
               <input
                 // name="image"
                 ref={imageRef}
@@ -89,7 +109,12 @@ export default function AddUpdateCourseForm() {
                   setFieldValue("image", event.target.files[0]);
                 }}
               />
-              {values.image && <ImagePreview file={values.image} />}
+              {/* {values.image ? (
+                <ImagePreview file={values.image} />
+              ) : (
+                <ImagePreview file={placeholder} />
+              )} */}
+
               <button
                 onClick={() => {
                   imageRef.current.click();

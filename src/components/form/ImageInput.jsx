@@ -7,7 +7,14 @@ import placeholder from "../../assets/images/placeholder.jpg";
 export default function ImageInput({ item, state, path }) {
   const [form, setForm] = state;
   const [isUploading, setIsUploading] = useState(false);
+  const [isImage, setIsImage] = useState(false);
   const manualId = uuidv4() + "_" + Date.now();
+
+  function getFileExtension(file) {
+    const lastDot = file.name.lastIndexOf(".");
+    const extension = file.name.substring(lastDot + 1);
+    return extension;
+  }
 
   async function changeHandler(event) {
     setIsUploading(true);
@@ -17,12 +24,14 @@ export default function ImageInput({ item, state, path }) {
     await uploadFile(file, filePath);
     const image = await downloadFile(filePath);
     setForm({ ...form, [item.key]: image });
+
+    // const extension = getFileExtension(file);
     setIsUploading(false);
   }
 
   return (
     <label className="image-input">
-      {item.label}
+      <span>{item.label} </span>
       <img src={!form[item.key] ? placeholder : form[item.key]} />
       {isUploading && <p>uploading...</p>}
       <input

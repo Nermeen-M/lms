@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { uploadFile, downloadFile } from "../../scripts/firebase/cloudStorage";
 import placeholder from "../../assets/images/placeholder.jpg";
+import LoadingScreen from "../shared/LoadingScreen";
 
 export default function ImageInput({ item, state, path }) {
   const [form, setForm] = state;
@@ -33,7 +34,7 @@ export default function ImageInput({ item, state, path }) {
     <label className="image-input">
       <span>{item.label} </span>
       <img src={!form[item.key] ? placeholder : form[item.key]} />
-      {isUploading && <p>uploading...</p>}
+      {isUploading && <LoadingScreen />}
       <input
         onChange={changeHandler}
         type={item.type}

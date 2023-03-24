@@ -1,0 +1,21 @@
+.study-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-x-large;
+  margin: $space-x-large 0;
+
+  .study-item-card {
+    background-color: $color-baby-blue;
+    padding: $space-medium;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      svg {
+        font-size: 25px;
+        color: $color-green;
+      }
+    }
+  }
+}

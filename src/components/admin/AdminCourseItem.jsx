@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import { deleteDocument } from "../../scripts/firebase/fireStore";
 import { useItems } from "../../state/ItemsContext";
@@ -25,19 +27,32 @@ export default function AdminCourseItem({ item, path }) {
   }
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <img src={!image ? placeholder : image} width="100" height="100" />
-      <Link to={`/courses/${id}`}>View</Link>
+    <div className="course-card">
+      <div className="image-container">
+        <img src={!image ? placeholder : image} width="100" height="100" />
+      </div>
+      <div className="details">
+        <h3>{title}</h3>
+        <div className="buttons-group">
+          <Link to={`/courses/${id}`}>
+            <FontAwesomeIcon icon={solid("arrow-right")} />
+          </Link>
 
-      <button
-        onClick={() =>
-          setModal(<UpdateItemForm path={path} fields={fields} data={item} />)
-        }
-      >
-        Edit
-      </button>
-      <button onClick={() => deleteHandler(id)}>Delete</button>
+          <button
+            onClick={() =>
+              setModal(
+                <UpdateItemForm path={path} fields={fields} data={item} />
+              )
+            }
+          >
+            <FontAwesomeIcon icon={solid("pen-to-square")} />
+          </button>
+          <button onClick={() => deleteHandler(id)}>
+            {" "}
+            <FontAwesomeIcon icon={solid("trash-can")} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

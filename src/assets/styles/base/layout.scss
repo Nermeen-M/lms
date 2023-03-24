@@ -1,0 +1,32 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+html {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: $color-dark-blue;
+
+  .container {
+    padding: $space-medium;
+  }
+
+  main {
+    min-height: calc(100vh - 270px);
+  }
+}
+
+@media (min-width: $media-tablet) {
+  html {
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: $media-desktop) {
+  html {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,42 @@
+#landing-page {
+  header {
+    padding: $space-medium;
+    background-color: $color-dark-blue;
+    display: flex;
+    gap: $space-medium;
+    align-items: center;
+    height: 60px;
+
+    .logo {
+      margin-right: auto;
+      img {
+        height: 40px;
+      }
+    }
+    a {
+      color: $color-white;
+      transition: $transition;
+
+      &:hover {
+        color: $color-yellow;
+      }
+    }
+  }
+
+  #hero {
+    height: calc(100vh - 60px);
+  }
+}
+
+@media (min-width: $media-desktop) {
+  #landing-page {
+    header {
+      padding: $space-medium $space-x-large;
+      height: 80px;
+    }
+
+    #hero {
+      height: calc(100vh - 80px);
+    }
+  }
+}

@@ -34,10 +34,15 @@ export default function AddItemForm({ path, fields, data }) {
 
   return (
     <div className="form">
-      <h2>Add item</h2>
+      <h1>Add item</h1>
       <form onSubmit={(event) => submitHandler(event)}>
         <FieldsGenerator fields={fields} state={[form, setForm]} path={path} />
-        <button>Confirm</button>
+        <div className="buttons-group">
+          <button className="primary-button">Add</button>
+          <button className="primary-button" onClick={() => setModal(null)}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

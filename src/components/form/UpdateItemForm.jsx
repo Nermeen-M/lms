@@ -29,11 +29,16 @@ export default function UpdateItemForm({ path, fields, data }) {
   }
 
   return (
-    <div className="formulary">
-      <h2>Edit item</h2>
+    <div className="form">
+      <h1>Edit item</h1>
       <form onSubmit={(event) => submitHandler(event)}>
         <FieldsGenerator fields={fields} state={[form, setForm]} />
-        <button>Confirm</button>
+        <div className="buttons-group">
+          <button className="primary-button">Save</button>
+          <button className="primary-button" onClick={() => setModal(null)}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

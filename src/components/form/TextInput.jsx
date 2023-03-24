@@ -2,7 +2,7 @@ export default function TextInput({ item, state }) {
   const [form, setForm] = state;
 
   return (
-    <label className="input-text">
+    <label className="text-input">
       {item.label}
       <input
         value={form[item.key]}

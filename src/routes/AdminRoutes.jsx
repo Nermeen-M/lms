@@ -8,7 +8,7 @@ import NotFound from "../pages/NotFound";
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route path="/home" element={<AdminHome />} />
+      <Route path="/" element={<AdminHome />} />
       <Route path="/courses/:id" element={<AdminCourseDetails />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />

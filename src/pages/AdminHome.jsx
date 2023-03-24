@@ -42,21 +42,24 @@ export default function AdminHome() {
   ));
 
   return (
-    <div>
+    <div id="admin-home">
       {status === "loading" && <LoadingScreen />}
       {status === "error" && <p>Error</p>}
       {status === "ready" && (
-        <div>
-          <h1>Admin Home</h1>
+        <div className="container">
+          <h1>Home</h1>
+          <h2>Courses</h2>
           <button
+            className="primary-button center"
             onClick={() =>
               setModal(<AddItemForm path={path} fields={fields} data={data} />)
             }
           >
-            Add new
+            Add new course
           </button>
-
-          {coursesList.length === 0 ? <EmptyState /> : coursesList}
+          <div className="courses-list">
+            {coursesList.length === 0 ? <EmptyState /> : coursesList}
+          </div>
         </div>
       )}
     </div>

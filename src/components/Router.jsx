@@ -12,7 +12,7 @@ export default function Router() {
 
   return (
     <React.Fragment>
-      {!user.uid && <UnloggedRoutes />}
+      {!user.id && <UnloggedRoutes />}
       {user.id && isTeacher && <AdminRoutes />}
       {user.id && !isTeacher && <StudentRoutes />}
     </React.Fragment>

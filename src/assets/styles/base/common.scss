@@ -1,0 +1,77 @@
+.primary-button {
+  min-width: 150px;
+  padding: $space-medium;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background-color: $color-yellow;
+  color: $color-dark-blue;
+  align-items: center;
+  transition: $transition;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $color-green;
+  }
+
+  &.center {
+    margin: $space-large auto;
+  }
+}
+
+.general-link {
+  color: $color-green;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.buttons-group {
+  display: flex;
+  gap: $space-medium;
+  justify-content: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: $color-baby-blue;
+    font-size: 80px;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  p {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: $media-desktop) {
+}

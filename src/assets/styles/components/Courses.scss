@@ -1,0 +1,38 @@
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-x-large;
+
+  .course-card {
+    width: 100%;
+    .image-container {
+      background-color: $color-yellow;
+      height: 225px;
+      width: 100%;
+      padding: $space-medium;
+      text-align: center;
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $space-small;
+
+      .buttons-group {
+        display: flex;
+        font-size: 25px;
+        gap: $space-small;
+
+        svg {
+          color: $color-green;
+        }
+      }
+    }
+  }
+}

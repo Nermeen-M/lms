@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../scripts/firebase/auth";
 import { readDocument } from "../../scripts/firebase/fireStore";
 import { useUser } from "../../state/UserContext";
+import loginImage from "../../assets/images/login.png";
+import logo from "../../assets/images/logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -22,18 +24,22 @@ export default function Login() {
   }
 
   async function onSucess(result) {
+    console.log("result", result);
     const userData = await getUserData(result.payload);
-    // console.log("user Data", userData);
+
+    console.log("user Data", userData);
+    // console.log("id", userData.payload.id);
+
     // setUid(result.payload);
-    setUser(userData);
+    setUser(userData.payload);
 
     if (remember) {
       // console.log("Login.jsx preparing to save...", result.payload);
       // saveUID(result.payload);
-      await saveUser(userData);
+      await saveUser(userData.payload);
     }
 
-    navigate("/home");
+    navigate("/");
   }
 
   function onFailure(result) {
@@ -48,37 +54,54 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h1>Login to continue studying</h1>
-      <form onSubmit={(event) => onSubmit(event)}>
-        <input
-          placeholder="email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
-        <input
-          placeholder="password"
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            checked={remember}
-            onChange={() => setRemember(!remember)}
-          />
-          Remember me
-        </label>
-        <br />
-        <button>Login</button>
-      </form>
-      <Link to="/recover-password">Forgot password?</Link>
-      <br />
-      <Link to="/sign-up">Create a new account</Link>
+    <div className="form auth-form">
+      <div className="container">
+        <Link to="/">
+          <img className="logo" src={logo} alt="Logo" />
+        </Link>
+
+        <h1>Login to Bright Brain</h1>
+        <img className="image" src={loginImage} alt="Login" />
+        <div className="form-container">
+          <form onSubmit={(event) => onSubmit(event)}>
+            <label>
+              Email
+              <input
+                placeholder="email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </label>
+            <label>
+              Password
+              <input
+                placeholder="password"
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </label>
+            <div className="checkbox">
+              <input
+                id="remember"
+                type="checkbox"
+                checked={remember}
+                onChange={() => setRemember(!remember)}
+              />
+              <label htmlFor="remember">Remember me</label>
+            </div>
+
+            <button className="primary-button">Login</button>
+          </form>
+          <Link className="general-link" to="/recover-password">
+            Forgot password?
+          </Link>
+          <Link className="general-link" to="/sign-up">
+            Create a new account
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

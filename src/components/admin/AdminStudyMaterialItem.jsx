@@ -1,9 +1,8 @@
-import { deleteDocument } from "../../scripts/firebase/fireStore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
+import { deleteDocument } from "../../scripts/firebase/fireStore";
 import placeholder from "../../assets/images/placeholder.jpg";
-// import FormDelete from "components/FormDelete";
-// import FormImage from "components/FormImage";
-// import FormUpdate from "components/FormUpdate";
 import fields from "../../data/studyItemFields.json";
 import UpdateItemForm from "../form/UpdateItemForm";
 import { useModal } from "../../state/ModalContext";
@@ -17,9 +16,6 @@ export default function AdminStudyMaterialItem({ item, path }) {
 
   const studyItemType = file === "" ? url : file;
 
-  //   const ImageForm = <FormImage path={path} data={item} imageKey="image_url" />;
-  //   const UpdateForm = <FormUpdate path={path} fields={fields} data={item} />;
-  //   const DeleteForm = <FormDelete path={path} id={item.id} />;
   async function deleteHandler(id) {
     const message = `Are you sure you want to delete ${title}`;
     const result = window.confirm(message);
@@ -31,16 +27,16 @@ export default function AdminStudyMaterialItem({ item, path }) {
   }
 
   return (
-    <article className="study-item-card">
-      <h2>{title}</h2>
-      {file && (
+    <div className="study-item-card">
+      <p>{title}</p>
+      {/* {file && (
         <img src={!file ? placeholder : file} width="100" height="100" />
       )}
       {url && (
         <a target="_blank" href={url}>
-          {title}
+          {file}
         </a>
-      )}
+      )} */}
 
       <div className="button-group">
         <button
@@ -55,10 +51,12 @@ export default function AdminStudyMaterialItem({ item, path }) {
             )
           }
         >
-          Edit
+          <FontAwesomeIcon icon={solid("pen-to-square")} />
         </button>
-        <button onClick={() => deleteHandler(id)}>Delete</button>
+        <button onClick={() => deleteHandler(id)}>
+          <FontAwesomeIcon icon={solid("trash-can")} />
+        </button>
       </div>
-    </article>
+    </div>
   );
 }

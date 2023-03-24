@@ -7,7 +7,7 @@ export default function UrlInput({ item, state }) {
   // }
 
   return (
-    <label className="input-text">
+    <label className="text-input">
       {item.label}
       <input
         value={form[item.key]}

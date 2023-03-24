@@ -20,7 +20,7 @@
     "id": 3,
     "key": "image",
     "type": "file",
-    "label": "",
+    "label": "Image",
     "required": true,
     "disabled": false
   }

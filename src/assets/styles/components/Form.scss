@@ -1,0 +1,119 @@
+.form {
+  min-width: 311px;
+  h1 {
+    text-align: center;
+  }
+  form {
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $space-medium;
+
+      input,
+      textarea {
+        width: 100%;
+        height: 50px;
+        border: 1px solid $color-yellow;
+        padding: $space-medium;
+
+        &.visually-hidden {
+          position: absolute !important;
+          height: 1px;
+          width: 1px;
+          overflow: hidden;
+          clip: rect(1px, 1px, 1px, 1px);
+
+          &:is(:focus, :focus-within) + label {
+            outline: thin dotted;
+          }
+        }
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      &.image-input {
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+        }
+
+        .spinner {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            color: $color-baby-blue;
+          }
+        }
+      }
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+
+      input[type="checkbox"] {
+        width: 20px;
+      }
+      label {
+        margin-bottom: 0;
+      }
+    }
+
+    button {
+      margin: $space-medium auto;
+    }
+  }
+
+  &.auth-form {
+    min-height: 100vh;
+    background: url("../../images/clouds-background.png");
+    .form-container {
+      background-color: $color-white;
+      padding: $space-large;
+      margin-bottom: $space-large;
+    }
+    .logo {
+      height: 70px;
+      display: block;
+      margin: $space-large auto;
+    }
+    h1 {
+      font-size: 40px;
+      text-align: center;
+    }
+    .image {
+      display: block;
+      margin: $space-medium auto;
+      width: 200px;
+    }
+    .primary-button {
+      margin: $space-medium 0;
+    }
+    .general-link {
+      display: block;
+      margin-bottom: $space-medium;
+    }
+  }
+}
+
+@media (min-width: $media-desktop) {
+  .form {
+    min-width: 500px;
+
+    form {
+      .form-field {
+        input {
+          padding: $space-small;
+        }
+      }
+    }
+  }
+}

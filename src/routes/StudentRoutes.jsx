@@ -9,7 +9,7 @@ import NotFound from "../pages/NotFound";
 export default function StudentRoutes() {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/courses/:courseName" element={<CourseDetails />} />
       <Route
         path="/courses/:courseName/:fileName"

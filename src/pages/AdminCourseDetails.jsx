@@ -8,6 +8,8 @@ import { readDocuments } from "../scripts/firebase/fireStore";
 import { useItems } from "../state/ItemsContext";
 import { useModal } from "../state/ModalContext";
 import fields from "../data/studyItemFields.json";
+import EmptyState from "../components/shared/EmptyState";
+import LoadingScreen from "../components/shared/LoadingScreen";
 
 import AdminStudyMaterialItem from "../components/admin/AdminStudyMaterialItem";
 
@@ -55,11 +57,33 @@ export default function AdminCourseDetails() {
   ));
 
   return (
-    <div>
-      Admin Course Details
-      <button onClick={addFileHandler}>Add File</button>
-      <button onClick={addLinkHandler}>Add Link</button>
-      {studyItems}
+    <div className="container">
+      {status === "loading" && <LoadingScreen />}
+      {status === "error" && <p>Error</p>}
+      {status === "ready" && (
+        <div>
+          <h1>Study Materials</h1>
+          <div className="buttons-group">
+            <button className="primary-button" onClick={addFileHandler}>
+              Add File
+            </button>
+            <button className="primary-button" onClick={addLinkHandler}>
+              Add Link
+            </button>
+          </div>
+
+          <div className="study-items-list">
+            {studyItems.length === 0 ? <EmptyState /> : studyItems}
+          </div>
+
+          <button
+            className="primary-button margin-auto"
+            onClick={() => navigate(-1)}
+          >
+            Go back
+          </button>
+        </div>
+      )}
     </div>
   );
 }

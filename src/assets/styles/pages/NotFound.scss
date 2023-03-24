@@ -1,0 +1,13 @@
+#page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $space-x-large;
+  background-color: $color-baby-blue;
+  height: 100vh;
+
+  svg {
+    font-size: 120px;
+  }
+}

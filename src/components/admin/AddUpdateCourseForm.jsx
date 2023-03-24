@@ -9,14 +9,14 @@ import {
   updateDocument,
 } from "../../scripts/firebase/fireStore";
 import { uploadFile, downloadFile } from "../../scripts/firebase/cloudStorage";
-import { useCourses } from "../../state/CoursesContext";
+import { useItems } from "../../state/ItemsContext";
 import { useModal } from "../../state/ModalContext";
 import ImagePreview from "../ImagePreview";
 import LoadingScreen from "../shared/LoadingScreen";
 import placeholder from "../../assets/images/placeholder.jpg";
 
 export default function AddUpdateCourseForm({ isEditMode, item }) {
-  const { dispatch } = useCourses();
+  const { dispatch } = useItems();
   const { setModal } = useModal();
 
   const imageRef = useRef(null);

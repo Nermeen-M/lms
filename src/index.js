@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { ModalProvider } from "./state/ModalContext";
 import { UserProvider } from "./state/UserContext";
-import { CoursesProvider } from "./state/CoursesContext";
+import { ItemsProvider } from "./state/ItemsContext";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,11 +12,11 @@ root.render(
   <React.StrictMode>
     <ModalProvider>
       <UserProvider storageKey="user-uid">
-        <CoursesProvider>
+        <ItemsProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
-        </CoursesProvider>
+        </ItemsProvider>
       </UserProvider>
     </ModalProvider>
   </React.StrictMode>

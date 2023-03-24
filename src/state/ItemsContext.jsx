@@ -4,17 +4,17 @@ import itemsReducer from "./itemsReducer";
 
 const Context = createContext(null);
 
-export function CoursesProvider({ children }) {
-  const [courses, dispatch] = useReducer(itemsReducer, []);
+export function ItemsProvider({ children }) {
+  const [items, dispatch] = useReducer(itemsReducer, []);
 
-  const value = { courses, dispatch };
+  const value = { items, dispatch };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 
-export function useCourses() {
+export function useItems() {
   const context = useContext(Context);
-  const errorMessage = "To use the courses context import it on index.js";
+  const errorMessage = "To use the items context import it on index.js";
 
   if (!context) throw new Error(errorMessage);
 

@@ -1,10 +1,13 @@
 import { deleteDocument } from "../../scripts/firebase/fireStore";
-import { useCourses } from "../../state/CoursesContext";
+import { useItems } from "../../state/ItemsContext";
 import { useModal } from "../../state/ModalContext";
-import AddUpdateCourseForm from "./AddUpdateCourseForm";
+import fields from "../../data/courseFields.json";
+import placeholder from "../../assets/images/placeholder.jpg";
 
-export default function AdminCourseItem({ item }) {
-  const { dispatch } = useCourses();
+import UpdateItemForm from "../form/UpdateItemForm";
+
+export default function AdminCourseItem({ item, path }) {
+  const { dispatch } = useItems();
   const { setModal } = useModal();
 
   const { id, title, image } = item;
@@ -24,10 +27,10 @@ export default function AdminCourseItem({ item }) {
   return (
     <div>
       <h1>{title}</h1>
-      <img src={image} width="100" height="100" />
+      <img src={!image ? placeholder : image} width="100" height="100" />
       <button
         onClick={() =>
-          setModal(<AddUpdateCourseForm isEditMode={isEditMode} item={item} />)
+          setModal(<UpdateItemForm path={path} fields={fields} data={item} />)
         }
       >
         Edit

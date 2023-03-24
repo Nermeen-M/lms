@@ -1,28 +1,26 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
-import FieldsGenerator from "./FieldsGenerator";
-import { createDocumentWithManualId } from "../../scripts/firebase/fireStore";
+import FieldsGenerator from "../../components/form/FieldsGenerator";
+import { updateDocument } from "../../scripts/firebase/fireStore";
 import { useModal } from "../../state/ModalContext";
 import { useItems } from "../../state/ItemsContext";
 
-export default function AddItemForm({ path, fields, data }) {
+export default function UpdateItemForm({ path, fields, data }) {
   const { setModal } = useModal();
   const { dispatch } = useItems();
 
   const [form, setForm] = useState(data);
-  const manualId = uuidv4() + "_" + Date.now();
 
   async function submitHandler(event) {
     event.preventDefault();
 
-    const result = await createDocumentWithManualId(path, manualId, form);
+    const result = await updateDocument(path, form.id, form);
 
     result.status ? onSuccess() : onFailure(result.message);
   }
 
   function onSuccess() {
-    dispatch({ type: "create", payload: { id: manualId, ...form } });
+    dispatch({ type: "update", payload: form });
     setModal(null);
   }
 
@@ -32,9 +30,9 @@ export default function AddItemForm({ path, fields, data }) {
 
   return (
     <div className="formulary">
-      <h2>Add item</h2>
+      <h2>Edit item</h2>
       <form onSubmit={(event) => submitHandler(event)}>
-        <FieldsGenerator fields={fields} state={[form, setForm]} path={path} />
+        <FieldsGenerator fields={fields} state={[form, setForm]} />
         <button>Confirm</button>
       </form>
     </div>

@@ -3,52 +3,108 @@ import { addDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
 
 import { database } from "./firebaseSetup";
 
-export async function createDocument(collectionName, data) {
-  const reference = collection(database, collectionName);
-  const document = await addDoc(reference, data);
-  const result = document.id;
+export async function createDocument(path, data) {
+  let result = { status: false, payload: null, message: "" };
+
+  try {
+    const reference = collection(database, path);
+    const document = await addDoc(reference, data);
+    const payload = document.id;
+
+    result = { status: true, payload: payload, message: "Document created" };
+  } catch (error) {
+    result.message = error.code;
+  }
 
   return result;
 }
 
+// export async function createDocumentWithManualId(collectionName, id, data) {
+//   const reference = collection(database, collectionName);
+//   const document = doc(reference, id);
+
+//   await setDoc(document, data);
+
+//   return `created document with manual id ${id}`;
+// }
 export async function createDocumentWithManualId(collectionName, id, data) {
-  const reference = collection(database, collectionName);
-  const document = doc(reference, id);
+  let result = { status: false, payload: null, message: "" };
+  try {
+    const reference = collection(database, collectionName);
+    const document = doc(reference, id);
 
-  await setDoc(document, data);
+    await setDoc(document, data);
 
-  return `created document with manual id ${id}`;
-}
-
-export async function readDocument(collectionName, documentId) {
-  const reference = doc(database, collectionName, documentId);
-  const document = await getDoc(reference);
-  const result = { id: document.id, ...document.data() };
-
-  return result;
-}
-
-export async function readDocuments(collectionName) {
-  const reference = collection(database, collectionName);
-  const snapshot = await getDocs(reference);
-  const result = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
+    result = {
+      status: true,
+      payload: id,
+      message: "Document created with manual ID",
+    };
+  } catch (error) {
+    result.message = error.code;
+  }
 
   return result;
 }
 
-export async function updateDocument(collectionName, documentToUpdate) {
-  const id = documentToUpdate.id;
-  const reference = doc(database, collectionName, id);
+export async function readDocument(path, id) {
+  let result = { status: false, payload: null, message: "" };
 
-  await updateDoc(reference, documentToUpdate);
+  try {
+    const reference = doc(database, path, id);
+    const document = await getDoc(reference);
+    const payload = { id: document.id, ...document.data() };
 
-  return `updated document with id ${id}`;
+    result = { status: true, payload: payload, message: "Document read" };
+  } catch (error) {
+    result.message = error.code;
+  }
+
+  return result;
 }
 
-export async function deleteDocument(collectionName, id) {
-  const reference = doc(database, collectionName, id);
+export async function readDocuments(path) {
+  let result = { status: false, payload: null, message: "" };
 
-  await deleteDoc(reference);
+  try {
+    const reference = collection(database, path);
+    const snap = await getDocs(reference);
+    const data = snap.docs.map((item) => ({ id: item.id, ...item.data() }));
 
-  return `deleted document with id ${id}`;
+    result = { status: true, payload: data, message: "Documents read" };
+  } catch (error) {
+    result.message = error.code;
+  }
+
+  return result;
+}
+
+export async function updateDocument(path, id, data) {
+  let result = { status: false, payload: null, message: "" };
+
+  try {
+    const reference = doc(database, path, id);
+    await updateDoc(reference, data);
+
+    result = { status: true, payload: null, message: `Document ${id} updated` };
+  } catch (error) {
+    result.message = error.code;
+  }
+
+  return result;
+}
+
+export async function deleteDocument(path, id) {
+  let result = { status: false, payload: null, message: "" };
+
+  try {
+    const reference = doc(database, path, id);
+    await deleteDoc(reference);
+
+    result = { status: true, payload: null, message: `Document ${id} deleted` };
+  } catch (error) {
+    result.message = error.code;
+  }
+
+  return result;
 }

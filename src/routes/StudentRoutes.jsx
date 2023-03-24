@@ -5,6 +5,7 @@ import CourseDetails from "../pages/CourseDetails";
 import StudyItemDetails from "../pages/StudyItemDetails";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
+import Navigation from "../components/shared/Navigation";
 
 export default function StudentRoutes() {
   return (

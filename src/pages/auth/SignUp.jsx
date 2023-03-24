@@ -12,7 +12,7 @@ export default function SignUp() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("123456");
+  const [password, setPassword] = useState("");
   const [isloading, setIsLoading] = useState(false);
   const collectionName = "users";
 

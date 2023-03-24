@@ -36,3 +36,15 @@
     }
   }
 }
+
+#home {
+  .course-card {
+    &:hover {
+      cursor: pointer;
+      .image-container {
+        background-color: $color-baby-blue;
+        transition: $transition;
+      }
+    }
+  }
+}

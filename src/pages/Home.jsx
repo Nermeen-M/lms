@@ -42,7 +42,13 @@ export default function Home() {
         <div className="container">
           <h1>Home</h1>
           <h2>Courses</h2>
-          <div className="courses-list">{coursesList}</div>
+          <div className="courses-list">
+            {coursesList.length === 0 ? (
+              <p>There are no items in this list.</p>
+            ) : (
+              coursesList
+            )}
+          </div>
         </div>
       )}
     </div>

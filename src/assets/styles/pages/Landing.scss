@@ -25,6 +25,127 @@
 
   #hero {
     height: calc(100vh - 60px);
+    .background {
+      height: 85%;
+      border-bottom-right-radius: 50%;
+      border-bottom-left-radius: 50%;
+      background-image: url("../../images/clouds-background.png");
+      display: flex;
+      align-items: center;
+      padding: $space-x-large;
+      justify-content: center;
+
+      h1 {
+        text-align: center;
+        span {
+          color: $color-green;
+        }
+      }
+    }
+    img {
+      width: 120px;
+      height: auto;
+      margin: 0 10%;
+      position: absolute;
+      bottom: 10%;
+
+      &:first-child {
+        left: 0;
+      }
+      &:last-child {
+        right: 0;
+      }
+    }
+  }
+
+  #about {
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: $space-large;
+      text-align: center;
+
+      h2 {
+        span {
+          color: $color-yellow;
+        }
+      }
+
+      img {
+        width: 250px;
+      }
+    }
+  }
+
+  #testmonials {
+    background-color: $color-yellow;
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: $space-large;
+      text-align: center;
+      align-items: center;
+
+      h2 {
+        color: $color-dark-blue;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: $space-large;
+        margin-bottom: $space-large;
+
+        .testmonial-card {
+          background-color: $color-white;
+          padding: $space-large;
+          width: 280px;
+          box-shadow: $box-shadow;
+
+          p {
+            margin: $space-medium;
+          }
+          span {
+            color: $color-green;
+          }
+        }
+      }
+    }
+  }
+
+  #join {
+    background-image: url("../../images/clouds-background.png");
+    text-align: center;
+
+    h2 {
+      color: $color-dark-blue;
+      margin: $space-large;
+    }
+    a {
+      width: 160px;
+      margin: $space-x-large auto;
+    }
+  }
+
+  footer {
+    background: $color-dark-blue;
+    color: $color-white;
+    padding: $space-x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 190px;
+
+    .icons {
+      display: flex;
+      font-size: 25px;
+      gap: $space-x-large;
+    }
+    .copyright {
+      margin: $space-medium;
+    }
   }
 }
 
@@ -37,6 +158,28 @@
 
     #hero {
       height: calc(100vh - 80px);
+      .background {
+        height: 95%;
+      }
+      img {
+        width: 200px;
+      }
+    }
+
+    #about {
+      .container {
+        img {
+          width: 350px;
+        }
+      }
+    }
+
+    #testmonials {
+      .container {
+        .cards {
+          flex-direction: row;
+        }
+      }
     }
   }
 }

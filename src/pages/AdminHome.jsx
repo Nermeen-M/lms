@@ -3,13 +3,10 @@ import { useState, useEffect } from "react";
 import AdminCourseItem from "../components/admin/AdminCourseItem";
 import EmptyState from "../components/shared/EmptyState";
 import LoadingScreen from "../components/shared/LoadingScreen";
-
-import AddUpdateCourseForm from "../components/admin/AddUpdateCourseForm";
-
+import AddItemForm from "../components/form/AddItemForm";
 import { readDocuments } from "../scripts/firebase/fireStore";
 import { useItems } from "../state/ItemsContext";
 import { useModal } from "../state/ModalContext";
-import AddItemForm from "../components/form/AddItemForm";
 import data from "../data/courseData.json";
 import fields from "../data/courseFields.json";
 

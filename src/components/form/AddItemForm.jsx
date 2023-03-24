@@ -13,6 +13,8 @@ export default function AddItemForm({ path, fields, data }) {
   const [form, setForm] = useState(data);
   const manualId = uuidv4() + "_" + Date.now();
 
+  // const isStudyItem = path.includes("studyItem");
+
   async function submitHandler(event) {
     event.preventDefault();
 
@@ -31,7 +33,7 @@ export default function AddItemForm({ path, fields, data }) {
   }
 
   return (
-    <div className="formulary">
+    <div className="form">
       <h2>Add item</h2>
       <form onSubmit={(event) => submitHandler(event)}>
         <FieldsGenerator fields={fields} state={[form, setForm]} path={path} />

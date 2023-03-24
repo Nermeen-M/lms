@@ -22,10 +22,15 @@ export default function ImageInput({ item, state, path }) {
 
   return (
     <label className="image-input">
+      {item.label}
       <img src={!form[item.key] ? placeholder : form[item.key]} />
       {isUploading && <p>uploading...</p>}
-      {/* {item.label} */}
-      <input onChange={changeHandler} type={item.type} hidden />
+      <input
+        onChange={changeHandler}
+        type={item.type}
+        hidden
+        disabled={item.disabled}
+      />
     </label>
   );
 }

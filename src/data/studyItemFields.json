@@ -1,0 +1,39 @@
+{
+  "itemFile": [
+    {
+      "id": 1,
+      "key": "title",
+      "type": "text",
+      "label": "Title",
+      "required": true,
+      "placeholder": "Title"
+    },
+    {
+      "id": 2,
+      "key": "file",
+      "type": "file",
+      "label": "File",
+      "required": false
+    }
+  ],
+
+  "itemLink": [
+    {
+      "id": 1,
+      "key": "title",
+      "type": "text",
+      "label": "Title",
+      "required": true,
+      "placeholder": "Title"
+    },
+    {
+      "id": 2,
+      "key": "url",
+      "type": "url",
+      "label": "Link",
+      "required": true,
+      "placeholder": "https://example.com",
+      "pattern": "https://.*"
+    }
+  ]
+}

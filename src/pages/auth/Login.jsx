@@ -9,36 +9,25 @@ import logo from "../../assets/images/logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
-  // const { setUid, saveUID, setUser, saveUser } = useUser();
   const { setUser, saveUser } = useUser();
 
-  const [email, setEmail] = useState("nermeen.mamdouh.nm@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
 
   async function onSubmit(event) {
     event.preventDefault();
     const result = await login(email, password);
-
     result.status ? onSucess(result) : onFailure(result);
   }
 
   async function onSucess(result) {
-    console.log("result", result);
     const userData = await getUserData(result.payload);
 
-    console.log("user Data", userData);
-    // console.log("id", userData.payload.id);
-
-    // setUid(result.payload);
     setUser(userData.payload);
-
     if (remember) {
-      // console.log("Login.jsx preparing to save...", result.payload);
-      // saveUID(result.payload);
       await saveUser(userData.payload);
     }
-
     navigate("/");
   }
 
@@ -49,7 +38,6 @@ export default function Login() {
   async function getUserData(userId) {
     const collectionName = "users";
     const data = await readDocument(collectionName, userId);
-    // await setUser(data);
     return data;
   }
 
@@ -59,7 +47,6 @@ export default function Login() {
         <Link to="/">
           <img className="logo" src={logo} alt="Logo" />
         </Link>
-
         <h1>Login to Bright Brain</h1>
         <img className="image" src={loginImage} alt="Login" />
         <div className="form-container">
@@ -91,7 +78,6 @@ export default function Login() {
               />
               <label htmlFor="remember">Remember me</label>
             </div>
-
             <button className="primary-button">Login</button>
           </form>
           <Link className="general-link" to="/recover-password">

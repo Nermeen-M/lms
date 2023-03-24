@@ -19,14 +19,6 @@ export async function createDocument(path, data) {
   return result;
 }
 
-// export async function createDocumentWithManualId(collectionName, id, data) {
-//   const reference = collection(database, collectionName);
-//   const document = doc(reference, id);
-
-//   await setDoc(document, data);
-
-//   return `created document with manual id ${id}`;
-// }
 export async function createDocumentWithManualId(collectionName, id, data) {
   let result = { status: false, payload: null, message: "" };
   try {

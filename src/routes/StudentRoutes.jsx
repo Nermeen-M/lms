@@ -11,9 +11,9 @@ export default function StudentRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/courses/:courseName" element={<CourseDetails />} />
+      <Route path="/courses/:courseId" element={<CourseDetails />} />
       <Route
-        path="/courses/:courseName/:fileName"
+        path="/courses/:courseId/:fileName"
         element={<StudyItemDetails />}
       />
       <Route path="/profile" element={<Profile />} />

@@ -11,10 +11,7 @@ import { useItems } from "../../state/ItemsContext";
 export default function AdminStudyMaterialItem({ item, path }) {
   const { dispatch } = useItems();
   const { id, title, file, url } = item;
-
   const { setModal } = useModal();
-
-  const studyItemType = file === "" ? url : file;
 
   async function deleteHandler(id) {
     const message = `Are you sure you want to delete ${title}`;
@@ -46,7 +43,6 @@ export default function AdminStudyMaterialItem({ item, path }) {
                 path={path}
                 fields={!file ? fields.itemLink : fields.itemFile}
                 data={item}
-                // type={studyItemType}
               />
             )
           }

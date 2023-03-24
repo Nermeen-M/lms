@@ -7,15 +7,11 @@ import LoadingScreen from "../../components/shared/LoadingScreen";
 import signUpImage from "../../assets/images/sign-up.png";
 import logo from "../../assets/images/logo.png";
 
-// import { useUser } from "../../state/UserContext";
-
 export default function SignUp() {
   const navigate = useNavigate();
-  // const { setUid, user, setUser } = useUser();
-  // const { user, setUser } = useUser();
 
-  const [name, setName] = useState("Mina");
-  const [email, setEmail] = useState("Mina@m.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("123456");
   const [isloading, setIsLoading] = useState(false);
   const collectionName = "users";
@@ -32,9 +28,6 @@ export default function SignUp() {
   async function onSucess(result) {
     const userData = { uid: result.payload, name: name, role: "student" };
     await createDocumentWithManualId(collectionName, result.payload, userData);
-
-    // await setUser(userData);
-    // await setUid(result.payload);
     setIsLoading(false);
     navigate("/login");
   }

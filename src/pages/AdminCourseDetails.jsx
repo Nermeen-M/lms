@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import AddItemForm from "../components/form/AddItemForm";
 import data from "../data/studyItemData.json";
-// import fields from "../data/studyItemFields.json";
 import { readDocuments } from "../scripts/firebase/fireStore";
 import { useItems } from "../state/ItemsContext";
 import { useModal } from "../state/ModalContext";
@@ -20,7 +19,6 @@ export default function AdminCourseDetails() {
   const navigate = useNavigate();
 
   const [status, setStatus] = useState("loading");
-  const [studyItemType, setStudyItemType] = useState("");
   const path = `courses/${id}/studyItems`;
 
   useEffect(() => {
@@ -44,11 +42,9 @@ export default function AdminCourseDetails() {
   }
 
   function addFileHandler() {
-    // setStudyItemType("file");
     setModal(<AddItemForm path={path} fields={fields.itemFile} data={data} />);
   }
   function addLinkHandler() {
-    // setStudyItemType("link");
     setModal(<AddItemForm path={path} fields={fields.itemLink} data={data} />);
   }
 

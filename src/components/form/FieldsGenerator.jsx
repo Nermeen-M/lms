@@ -3,7 +3,7 @@ import TextAreaInput from "./TextAreaInput";
 import ImageInput from "./ImageInput";
 import UrlInput from "./UrlInput";
 
-export default function FieldsGenerator({ fields, state, path, options }) {
+export default function FieldsGenerator({ fields, state, path }) {
   const Fields = fields.map((item) => {
     switch (item.type) {
       case "email":
@@ -16,7 +16,9 @@ export default function FieldsGenerator({ fields, state, path, options }) {
       case "textarea":
         return <TextAreaInput key={item.id} item={item} state={state} />;
       case "file":
-        return <ImageInput key={item.id} item={item} state={state} />;
+        return (
+          <ImageInput key={item.id} item={item} state={state} path={path} />
+        );
       default:
         throw new Error(`FieldsGenerator item type "${item.type}" not valid`);
     }

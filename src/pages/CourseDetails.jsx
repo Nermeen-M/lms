@@ -8,12 +8,12 @@ import LoadingScreen from "../components/shared/LoadingScreen";
 import StudyMaterialItem from "../components/StudyMaterialItem";
 
 export default function CourseDetails() {
-  const { id } = useParams();
+  const { courseId } = useParams();
   const { items, dispatch } = useItems();
   const navigate = useNavigate();
 
   const [status, setStatus] = useState("loading");
-  const path = `courses/${id}/studyItems`;
+  const path = `courses/${courseId}/studyItems`;
 
   useEffect(() => {
     loadData();
@@ -44,7 +44,7 @@ export default function CourseDetails() {
       {status === "loading" && <LoadingScreen />}
       {status === "error" && <p>Error</p>}
       {status === "ready" && (
-        <div>
+        <>
           <h1>Study Materials</h1>
           <div className="study-items-list">
             {studyItems.length === 0 ? (
@@ -60,7 +60,7 @@ export default function CourseDetails() {
           >
             Go back
           </button>
-        </div>
+        </>
       )}
     </div>
   );

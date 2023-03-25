@@ -17,5 +17,23 @@
         color: $color-green;
       }
     }
+
+    &.student-side {
+      justify-content: flex-start;
+      gap: $space-medium;
+
+      .bullet {
+        height: 32px;
+      }
+      a {
+        color: $color-dark-blue;
+      }
+    }
+  }
+}
+
+.study-item-details {
+  img {
+    width: 100%;
   }
 }

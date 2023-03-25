@@ -8,19 +8,18 @@ import LoadingScreen from "../shared/LoadingScreen";
 export default function ImageInput({ item, state, path }) {
   const [form, setForm] = state;
   const [isUploading, setIsUploading] = useState(false);
-  const [isImage, setIsImage] = useState(false);
+  // const [isImage, setIsImage] = useState(false);
   const manualId = uuidv4() + "_" + Date.now();
 
-  function getFileExtension(file) {
-    const lastDot = file.name.lastIndexOf(".");
-    const extension = file.name.substring(lastDot + 1);
-    return extension;
-  }
-
+  // function getFileExtension(file) {
+  //   const lastDot = file.name.lastIndexOf(".");
+  //   const extension = file.name.substring(lastDot + 1);
+  //   return extension;
+  // }
   async function changeHandler(event) {
     setIsUploading(true);
     const file = event.target.files[0];
-    const filePath = `${path}/${manualId}_${file.name}`;
+    const filePath = `courses/${manualId}_${file.name}`;
 
     await uploadFile(file, filePath);
     const image = await downloadFile(filePath);

@@ -58,6 +58,7 @@ export default function Login() {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                required
               />
             </label>
             <label>
@@ -67,6 +68,7 @@ export default function Login() {
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                required
               />
             </label>
             <div className="checkbox">

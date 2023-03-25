@@ -51,6 +51,7 @@ export default function RecoverPassword() {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                required
               />
             </label>
 

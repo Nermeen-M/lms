@@ -56,6 +56,7 @@ export default function SignUp() {
                 type="name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
+                required
               />
             </label>
             <label>
@@ -65,6 +66,7 @@ export default function SignUp() {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                required
               />
             </label>
             <label>
@@ -74,6 +76,7 @@ export default function SignUp() {
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                required
               />
             </label>
 

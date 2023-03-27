@@ -11,7 +11,6 @@ export default function AdminStudyMaterialItem({ item }) {
   return (
     <div className="study-item-card student-side">
       <img className="bullet" src={arrow} />
-      {/* Why sent it to another page if some files cannot be seen, just sent everything to a target _blank */}
       {file && <Link to={`/courses/${courseId}/${id}`}>{title}</Link>}
       {url && (
         <Link target="_blank" to={url}>

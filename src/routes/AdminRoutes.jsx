@@ -5,7 +5,6 @@ import AdminCourseDetails from "../pages/AdminCourseDetails";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 
-// good
 export default function AdminRoutes() {
   return (
     <Routes>

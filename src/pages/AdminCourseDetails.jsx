@@ -54,10 +54,6 @@ export default function AdminCourseDetails() {
 
   return (
     <div className="container">
-      {/* Formating -1 */}
-      {/* Check the final version of the BBQ to make this cleaner */}
-      {/* By putting the loading and error cases outside */}
-      {/* Making the main return only handle the ready scenario */}
       {status === "loading" && <LoadingScreen />}
       {status === "error" && <p>Error</p>}
       {status === "ready" && (
@@ -76,9 +72,10 @@ export default function AdminCourseDetails() {
             {studyItems.length === 0 ? <EmptyState /> : studyItems}
           </div>
 
-          {/* Im not fond of using maring-auto as a class */}
-          {/* Note that if i remove the button becomes 1 line */}
-          <button className="primary-button" onClick={() => navigate(-1)}>
+          <button
+            className="primary-button margin-auto"
+            onClick={() => navigate(-1)}
+          >
             Go back
           </button>
         </div>

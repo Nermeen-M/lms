@@ -43,7 +43,6 @@ export default function Home() {
           <h1>Home</h1>
           <h2>Courses</h2>
           <div className="courses-list">
-            {/* Nesting -1 */}
             {coursesList.length === 0 ? (
               <p>There are no items in this list.</p>
             ) : (

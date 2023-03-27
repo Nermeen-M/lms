@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import placeholder from "../assets/images/placeholder.jpg";
 
-// good
 export default function CourseItem({ item }) {
   const navigate = useNavigate();
 

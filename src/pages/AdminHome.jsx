@@ -41,6 +41,7 @@ export default function AdminHome() {
     <AdminCourseItem key={item.id} item={item} path={path} />
   ));
 
+  // same as AdminCourseDetails, but the loading and eror outside to clean the code
   return (
     <div id="admin-home">
       {status === "loading" && <LoadingScreen />}

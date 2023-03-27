@@ -38,6 +38,7 @@ export default function StudyItemDetails() {
           <img src={currentItem.file} />
         </div>
       )}
+      {/* Same with other page, remove the maring-auto class and becomes easier to read */}
       <button
         className="primary-button margin-auto"
         onClick={() => navigate(-1)}

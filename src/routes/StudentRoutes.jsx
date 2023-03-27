@@ -6,6 +6,7 @@ import StudyItemDetails from "../pages/StudyItemDetails";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 
+// good
 export default function StudentRoutes() {
   return (
     <Routes>

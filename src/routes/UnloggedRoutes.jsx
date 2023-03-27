@@ -6,6 +6,7 @@ import SignUp from "../pages/auth/SignUp";
 import RecoverPassword from "../pages/auth/RecoverPassword";
 import NotFound from "../pages/NotFound";
 
+// good
 export default function UnloggedRoutes() {
   return (
     <Routes>

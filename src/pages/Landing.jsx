@@ -13,6 +13,9 @@ export default function Landing() {
       <Hero />
       <About />
       <Testmonials />
+      {/* Formating -1 (more about consistency) */}
+      {/* Why Header, Hero, About, Testimonial and Footer are components */}
+      {/* But this one not */}
       <section id="join">
         <div className="container">
           <h2>Create an account and Start you journey with Bright Brain</h2>

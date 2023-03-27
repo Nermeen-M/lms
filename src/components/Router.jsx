@@ -12,6 +12,10 @@ export default function Router() {
   const isTeacher = user.role == "teacher";
 
   return (
+    // React Fragment is the <>, so you are using 2 ways to call the same component
+    // 1.- <React.Fragment></React.Fragment>
+    // 2.- <></>
+    // Stick to a single style
     <React.Fragment>
       {!user.id && <UnloggedRoutes />}
       {user.id && (
@@ -23,6 +27,7 @@ export default function Router() {
           </div>
         </>
       )}
+      {/* No comments -1 */}
       {/* {user.id && isTeacher && <AdminRoutes />}
       {user.id && !isTeacher && <StudentRoutes />} */}
     </React.Fragment>

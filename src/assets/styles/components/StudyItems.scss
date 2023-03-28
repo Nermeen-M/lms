@@ -21,6 +21,7 @@
     &.student-side {
       justify-content: flex-start;
       gap: $space-medium;
+      color: $color-dark-blue;
 
       .bullet {
         height: 32px;

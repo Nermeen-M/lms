@@ -11,9 +11,9 @@ export default function Navigation() {
   const { setUser } = useUser();
   const navigate = useNavigate();
 
-  function LogoutHandler() {
+  async function LogoutHandler() {
     localStorage.removeItem("user-data");
-    setUser("");
+    await setUser("");
     navigate("/");
   }
 

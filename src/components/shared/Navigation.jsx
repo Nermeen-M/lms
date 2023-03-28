@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { useUser } from "../../state/UserContext";
+
 import logo from "../../assets/images/logo-white.png";
 
 export default function Navigation() {
+  const { setUser } = useUser();
+  const navigate = useNavigate();
+
+  function LogoutHandler() {
+    localStorage.removeItem("user-data");
+    setUser("");
+    navigate("/");
+  }
+
   return (
     <nav>
       <img className="logo" src={logo} />
@@ -25,7 +36,7 @@ export default function Navigation() {
         <FontAwesomeIcon icon={solid("user")} />
         <span>Profile</span>
       </Link>
-      <Link>
+      <Link onClick={() => LogoutHandler()}>
         <FontAwesomeIcon icon={solid("right-from-bracket")} />
         <span>Logout</span>
       </Link>

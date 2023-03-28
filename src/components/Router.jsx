@@ -12,7 +12,7 @@ export default function Router() {
   const isTeacher = user.role == "teacher";
 
   return (
-    <React.Fragment>
+    <>
       {!user.id && <UnloggedRoutes />}
       {user.id && (
         <>
@@ -23,8 +23,6 @@ export default function Router() {
           </div>
         </>
       )}
-      {/* {user.id && isTeacher && <AdminRoutes />}
-      {user.id && !isTeacher && <StudentRoutes />} */}
-    </React.Fragment>
+    </>
   );
 }

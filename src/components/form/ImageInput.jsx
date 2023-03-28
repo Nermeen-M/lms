@@ -5,17 +5,11 @@ import { uploadFile, downloadFile } from "../../scripts/firebase/cloudStorage";
 import placeholder from "../../assets/images/placeholder.jpg";
 import LoadingScreen from "../shared/LoadingScreen";
 
-export default function ImageInput({ item, state, path }) {
+export default function ImageInput({ item, state }) {
   const [form, setForm] = state;
   const [isUploading, setIsUploading] = useState(false);
-  // const [isImage, setIsImage] = useState(false);
   const manualId = uuidv4() + "_" + Date.now();
 
-  // function getFileExtension(file) {
-  //   const lastDot = file.name.lastIndexOf(".");
-  //   const extension = file.name.substring(lastDot + 1);
-  //   return extension;
-  // }
   async function changeHandler(event) {
     setIsUploading(true);
     const file = event.target.files[0];
@@ -25,7 +19,6 @@ export default function ImageInput({ item, state, path }) {
     const image = await downloadFile(filePath);
     setForm({ ...form, [item.key]: image });
 
-    // const extension = getFileExtension(file);
     setIsUploading(false);
   }
 

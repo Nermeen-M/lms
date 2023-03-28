@@ -26,14 +26,6 @@ export default function AdminStudyMaterialItem({ item, path }) {
   return (
     <div className="study-item-card">
       <p>{title}</p>
-      {/* {file && (
-        <img src={!file ? placeholder : file} width="100" height="100" />
-      )}
-      {url && (
-        <a target="_blank" href={url}>
-          {file}
-        </a>
-      )} */}
 
       <div className="button-group">
         <button

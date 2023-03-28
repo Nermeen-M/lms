@@ -13,8 +13,6 @@ export default function AddItemForm({ path, fields, data }) {
   const [form, setForm] = useState(data);
   const manualId = uuidv4() + "_" + Date.now();
 
-  // const isStudyItem = path.includes("studyItem");
-
   async function submitHandler(event) {
     event.preventDefault();
 

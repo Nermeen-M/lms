@@ -1,14 +1,14 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const Context = createContext();
 
-export function UserProvider({ children, storageKey }) {
+export function UserProvider({ children }) {
   const [user, setUser] = useState(loadUser("user-data"));
 
   const value = { user, setUser, saveUser };
 
-  function loadUser(storagekeyy) {
-    const stringData = localStorage.getItem(storagekeyy);
+  function loadUser(storagekey) {
+    const stringData = localStorage.getItem(storagekey);
     const data = JSON.parse(stringData) || {};
     return data;
   }
